@@ -1,22 +1,57 @@
-# orientation-layer
-A pre-alignment decision layer spec for AI systems, defining whether a system’s direction should exist before safety and alignment are applied.
-Orientation Layer v0.1
+# Orientation Layer (v0.1)
 
-Purpose:
-Prevent uncontrolled optimization and value drift in AI systems.
+A pre-alignment decision layer spec for AI systems, defining whether a system’s direction should exist **before** safety and alignment mechanisms are applied.
 
-Input:
+---
+
+## Purpose
+
+Prevent uncontrolled optimization, value drift, and irreversible risk amplification by introducing a **pre-alignment orientation gate** in AI system design.
+
+Orientation operates upstream of objectives, rewards, and deployment — where many critical risks are already locked in.
+
+---
+
+## Scope & Non-goals
+
+**Scope**
+- Pre-alignment decision gating
+- Objective legitimacy checks
+- Non-optimizable value constraints
+- Escalation to human-in-the-loop
+
+**Non-goals**
+- Model training or fine-tuning
+- Content moderation
+- Post-deployment auditing
+- Regulatory compliance enforcement
+
+---
+
+## Orientation Layer v0.1
+
+### Inputs
 - Goal definition (human-provided)
 - Value constraints (non-optimizable)
-- Context boundary (affected parties)
+- Context boundaries (affected parties, scale, power asymmetry)
 
-Process:
-1. Validate goal against constraints
-2. Detect conflict between optimization and values
-3. If conflict detected → halt loop
+### Process
+1. Validate goal against value constraints
+2. Detect conflict between optimization and protected values
+3. If conflict detected → halt optimization loop
 4. Escalate decision to human-in-the-loop
 
-Output:
+### Outputs
 - Proceed
 - Reject
 - Escalate
+
+---
+
+## Minimal Control Loop (Conceptual)
+
+```pseudo
+while system_is_running:
+    if orientation_violation_detected:
+        halt()
+        escalate_to_human()
