@@ -55,3 +55,22 @@ while system_is_running:
     if orientation_violation_detected:
         halt()
         escalate_to_human()
+---
+
+## Why Orientation (vs Alignment)
+
+Alignment asks: Is the system doing what we asked?
+
+Orientation asks: Should this system be asked to do this at all?
+
+Without orientation, alignment may optimize systems toward directions that should never scale.
+
+---
+
+## Status
+
+Draft v0.1 — seeking feedback from AI alignment, safety, and governance practitioners.
+
+## License
+
+Conceptual specification. Open for discussion and iteration.
