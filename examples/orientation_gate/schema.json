@@ -1,0 +1,24 @@
+{
+  "name": "orientation_gate",
+  "description": "Pre-alignment orientation decision gate. Returns Proceed/Reject/Escalate plus risk scores and mitigations.",
+  "type": "object",
+  "properties": {
+    "decision": { "type": "string", "enum": ["PROCEED", "ESCALATE", "REJECT"] },
+    "risk_scores": {
+      "type": "object",
+      "properties": {
+        "objective_legitimacy": { "type": "number", "minimum": 0, "maximum": 100 },
+        "power_asymmetry": { "type": "number", "minimum": 0, "maximum": 100 },
+        "manipulation_risk": { "type": "number", "minimum": 0, "maximum": 100 },
+        "irreversibility": { "type": "number", "minimum": 0, "maximum": 100 },
+        "alignment_feasibility": { "type": "number", "minimum": 0, "maximum": 100 }
+      },
+      "required": ["objective_legitimacy", "power_asymmetry", "manipulation_risk", "irreversibility", "alignment_feasibility"]
+    },
+    "violations": { "type": "array", "items": { "type": "string" } },
+    "rationale": { "type": "string" },
+    "required_mitigations": { "type": "array", "items": { "type": "string" } },
+    "test_prompts": { "type": "array", "items": { "type": "string" } }
+  },
+  "required": ["decision", "risk_scores", "violations", "rationale", "required_mitigations", "test_prompts"]
+}
