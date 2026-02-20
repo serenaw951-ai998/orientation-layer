@@ -1,4 +1,22 @@
 # Orientation Layer (v0.1)
+## Quick Start (Run the Orientation Gate)
+
+```bash
+node orientation_gate/gate_node.js examples/demo_input.json
+```
+
+This will output a structured decision:
+- PROCEED
+- ESCALATE
+- REJECT
+
+with quantified risk scores.
+
+---
+The Orientation Gate acts as a pre-execution decision layer for AI agents.
+It should be invoked before any optimization or deployment step.
+
+---
 
 A pre-alignment decision layer spec for AI systems, defining whether a system’s direction should exist **before** safety and alignment mechanisms are applied.
 
