@@ -79,7 +79,72 @@ while system_is_running:
         halt()
         escalate_to_human()
 ```
+## System Diagram
 
+```mermaid
+flowchart TD
+    A[User Request] --> B[Agent / Proposed Action]
+    B --> C[Orientation Engine]
+
+    C --> C1[Signal Detection]
+    C --> C2[Risk Evaluation]
+    C --> C3[Constraint / Policy Check]
+    C --> C4[Decision Logic]
+
+    C1 --> D[Decision Output]
+    C2 --> D
+    C3 --> D
+    C4 --> D
+
+    D --> E1[ALLOW]
+    D --> E2[MODIFY]
+    D --> E3[ESCALATE]
+    D --> E4[REJECT]
+
+    E1 --> F[LLM / Tool Execution]
+    E2 --> F
+    E3 --> G[Human / Higher-Level Review]
+    E4 --> H[Stop Action]
+```
+
+---
+
+## Where Orientation Sits
+
+```mermaid
+flowchart LR
+    A[Application / Customer Support] --> B[Agent Layer]
+    B --> C[Orientation Engine]
+    C --> D[LLM]
+    D --> E[Tools / Execution]
+```
+
+Orientation sits **between agent intent and model execution**.
+
+---
+
+## Customer Support Example
+
+```mermaid
+flowchart TD
+    A[Customer Request] --> B[AI Draft Response / Proposed Action]
+    B --> C[Orientation Check]
+    C --> D1[ALLOW: normal response]
+    C --> D2[MODIFY: rewrite / soften / constrain]
+    C --> D3[ESCALATE: send to human agent]
+    C --> D4[REJECT: stop unsafe action]
+```
+
+Orientation helps prevent:
+- unauthorized commitments
+- wrong policy interpretation
+- missed escalation cases
+- unstable AI actions
+
+---
+
+**Orientation** is a pre-execution decision layer for AI systems.
+It evaluates proposed actions before execution and determines whether the system should **allow, modify, escalate, or reject** them.
 ---
 
 ## Example Use Case
